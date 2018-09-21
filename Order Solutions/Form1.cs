@@ -47,8 +47,6 @@ namespace Order_Solutions
             InitializeComponent();
         }
 
-
-
         //allorders
         private void Callorders_Click(object sender, EventArgs e)
         {
@@ -190,8 +188,14 @@ namespace Order_Solutions
             }
         }
 
+
         private void Passive_Click(object sender, EventArgs e)
         {
+            sheetao = CSallorders.SelectedValue.ToString();
+            sheetao = Utilities.Trimsheetnames(sheetao);
+            sheetpc = CSaubt.SelectedValue.ToString();
+            sheetpc = Utilities.Trimsheetnames(sheetpc);
+
             if (String.IsNullOrEmpty(Pallorders.Text) || (String.IsNullOrEmpty(Paubt.Text)))
             {
                 MessageBox.Show("Lütfen Tüm Siparişler ve AÜBT Dosyalarını Seçiniz");
@@ -213,7 +217,6 @@ namespace Order_Solutions
         }
 
 
-
         private void Combination_Click(object sender, EventArgs e)
         {
             var dialog = new FolderBrowserDialog();
@@ -222,6 +225,7 @@ namespace Order_Solutions
             pathsout = pathsout + "\\combo" + ".xlsx";
             allsheets.oneexcel(pathsout, pathinao, pathinap, pathinpc, pathinac);
         }
+
 
         private void ayplan_Click(object sender, EventArgs e)
         {
@@ -232,12 +236,10 @@ namespace Order_Solutions
                 MessageBox.Show("Lütfen DAshBoard ve AÜBT Dosyalarını Seçiniz");
                 return;
             }
-            // BUraya "'" ve "$" ları silecek şekilde formül yaz.
             sheetdb = CSdashboard.SelectedValue.ToString();
             sheetdb = Utilities.Trimsheetnames(sheetdb);
-            sheetdb = sheetdb.Substring(1, sheetdb.Length - 3);
             sheetpc = CSaubt.SelectedValue.ToString();
-            sheetpc = sheetpc.Substring(0, sheetpc.Length - 1);
+            sheetpc = Utilities.Trimsheetnames(sheetpc);
             string pathsout = pathindb.Substring(0, pathindb.LastIndexOf("."));
             string ext = pathindb.Substring(pathindb.LastIndexOf("."));
             pathsout = pathinpc.Substring(0, pathinpc.LastIndexOf("."));

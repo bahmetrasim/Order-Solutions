@@ -14,12 +14,15 @@ namespace Order_Solutions
         {
             if (Sheetname.Split(' ').Length == 1)
             {
+                Sheetname = Sheetname.Substring(0, Sheetname.Length - 1);
+            }
+            else
+            {
+                Sheetname = Sheetname.Substring(1, Sheetname.Length - 3);
+            }
 
-            } 
-
-            return "a";
+            return Sheetname;
         }
 
-        int x;
     }
 }
